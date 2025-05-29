@@ -31,6 +31,7 @@ class LetterRequest(BaseModel):
     campaign: str
     organization_name: str
     contact_email: EmailStr
+    org_represnetative: str
     tone: str = Field("warm", pattern="^(formal|warm|celebratory)$")
     language: str = Field("en", max_length=5)
     letter_length: str = Field("standard", pattern="^(short|standard|detailed)$")
@@ -54,6 +55,7 @@ Contact Email: {req.contact_email}
 Tone: {req.tone}
 Impact Points: {"; ".join(req.impact_statements) or "none"}
 Additional Note: {req.custom_message}
+From: {req.org_represnetative}
 Include proper IRS tax receipt language: “No goods or services…”
     """.strip()
 
